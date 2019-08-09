@@ -81,7 +81,6 @@
     <object>objects\obj_victory</object>
     <object>objects\obj_room_control</object>
     <object>objects\obj_solid</object>
-    <object>objects\obj_coind</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>
