@@ -29,7 +29,6 @@
     <sprite>sprites\spr_column</sprite>
     <sprite>sprites\spr_column_destruction</sprite>
     <sprite>sprites\spr_column_brick</sprite>
-    <sprite>sprites\sprite12</sprite>
     <sprite>sprites\sprite17</sprite>
     <sprite>sprites\spr_meteor</sprite>
     <sprite>sprites\spr_meteor_explosion</sprite>
@@ -54,7 +53,7 @@
     <sprite>sprites\sprite37</sprite>
     <sprite>sprites\sprite40</sprite>
     <sprite>sprites\spr_solid</sprite>
-    <sprite>sprites\sprite42</sprite>
+    <sprite>sprites\spr_heart</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -81,6 +80,7 @@
     <object>objects\obj_victory</object>
     <object>objects\obj_room_control</object>
     <object>objects\obj_solid</object>
+    <object>objects\obj_shake_screen</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room2</room>

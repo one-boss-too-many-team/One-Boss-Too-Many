@@ -91,6 +91,8 @@ if room_start == 1 {
 if room == room0 {
 draw_sprite(spr_bar,0,view_xview+84,view_yview+20)
 draw_sprite_ext(spr_healt,0,view_xview+84+2,view_yview+2+20,obj_boss.healt/obj_boss.max_healt,1,0,c_white,1)
+
+draw_sprite_ext(spr_heart,obj_char.healt,view_xview+16,view_yview+view_hview-144,1,1,0,c_white,1)
 }
 </string>
           </argument>

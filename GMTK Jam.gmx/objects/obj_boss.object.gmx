@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>audio_play_sound(boss1,1,true)
 real_spd = 2
-spd = 5
+spd = 0
 aim = 0
 img_xscale = 1
 img_spd = 1/2
@@ -175,6 +175,7 @@ if healt &lt;= 0 {
                                 change_sprite = spr_boss_2_run
                                 change_time = 80
                                 change_size = 1
+                                instance_create(x,y,obj_shake_screen)
                                 }
                                 
                 if healt_2 != 0 &amp;&amp; healt &lt;= 0{
@@ -189,6 +190,7 @@ if healt &lt;= 0 {
                                 change_sprite = spr_boss_3_run
                                 change_time = 80
                                 change_size = 1
+                                instance_create(x,y,obj_shake_screen)
                                 }
                                 
                 if healt_3 != 0 &amp;&amp; healt &lt;= 0{
@@ -207,6 +209,7 @@ if healt &lt;= 0 {
                                 change_time = 80
                                 change_size = 1
                                 meteor_cd = 90
+                                instance_create(x,y,obj_shake_screen)
                                 }
                 if healt &lt;= 0 &amp;&amp; healt_4 == 0 {
                                                 
