@@ -18,14 +18,16 @@
     <sprite>sprites\spr_green_fireball</sprite>
     <sprite>sprites\spr_yellow_fireball</sprite>
     <sprite>sprites\sprite3</sprite>
-    <sprite>sprites\spr_boss_3_run</sprite>
-    <sprite>sprites\sprite8</sprite>
-    <sprite>sprites\spr_boss_4_run</sprite>
-    <sprite>sprites\sprite9</sprite>
-    <sprite>sprites\spr_boss_1_run</sprite>
-    <sprite>sprites\sprite10</sprite>
-    <sprite>sprites\spr_boss_2_run</sprite>
-    <sprite>sprites\sprite11</sprite>
+    <sprites name="enemies ">
+      <sprite>sprites\spr_boss_3_run</sprite>
+      <sprite>sprites\sprite8</sprite>
+      <sprite>sprites\spr_boss_4_run</sprite>
+      <sprite>sprites\sprite9</sprite>
+      <sprite>sprites\spr_boss_1_run</sprite>
+      <sprite>sprites\sprite10</sprite>
+      <sprite>sprites\spr_boss_2_run</sprite>
+      <sprite>sprites\sprite11</sprite>
+    </sprites>
     <sprite>sprites\spr_column</sprite>
     <sprite>sprites\spr_column_destruction</sprite>
     <sprite>sprites\spr_column_brick</sprite>
@@ -54,6 +56,10 @@
     <sprite>sprites\sprite40</sprite>
     <sprite>sprites\spr_solid</sprite>
     <sprite>sprites\spr_heart</sprite>
+    <sprite>sprites\spr_glow_effect</sprite>
+    <sprite>sprites\spr_menu</sprite>
+    <sprite>sprites\spr_play_button</sprite>
+    <sprite>sprites\spr_quit_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -62,6 +68,7 @@
     <background>background\background3</background>
     <background>background\background4</background>
     <background>background\background5</background>
+    <background>background\background_menu</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
