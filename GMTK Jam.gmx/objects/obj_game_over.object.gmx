@@ -48,7 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_anykey) {room  = room2}
+            <string>if keyboard_check_pressed(vk_anykey) &amp;&amp; browser_not_a_browser == 1 {obj_room_control.rooom  = room2} else if keyboard_check_pressed(vk_anykey) {room  = room2}
 </string>
           </argument>
         </arguments>

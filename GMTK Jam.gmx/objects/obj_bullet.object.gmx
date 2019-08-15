@@ -127,10 +127,10 @@ if boss != noone &amp;&amp; hit &lt;= 1 {
                                 hit = 60
                                 part_type_shape(third_particle,pt_shape_square);
                                 part_type_scale(third_particle,1,1);
-                                part_type_size(third_particle,0.3,0.01,-0.01,0);
+                                part_type_size(third_particle,choose(0.3,0.4,0.5),0.01,-0.03,0);
                                 part_type_color2(third_particle,make_colour_rgb(112,163,128),65280);
                                 part_type_alpha2(third_particle,1,0.50);
-                                part_type_speed(third_particle,0.5,0.7,0,0)
+                                part_type_speed(third_particle,choose(0.5,0.6,0.8,0.9),0.7,0,0)
                                 part_type_direction(third_particle,0,359,0,0) 
                                 part_type_orientation(third_particle,0,359,10,true,true)
                                 part_type_life(third_particle,50,60)
@@ -185,7 +185,7 @@ part_type_life(second_particle,50,100)
 part_type_blend(second_particle,true);                                
 part_emitter_region(SecondParticleSystem, second_emitter, x-10, x+10, y-10, y+10, ps_shape_ellipse, ps_distr_gaussian);                                
 part_type_direction(second_particle,(direction-180)-20,(direction-180)+20,0,0)                            
-part_emitter_burst(SecondParticleSystem,second_emitter,second_particle,4)
+part_emitter_burst(SecondParticleSystem,second_emitter,second_particle,8)
 
 
 }    
