@@ -26,7 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>audio_play_sound(boss1,1,true)
+img_scale = 1
 real_spd = 2
+laser_len = 0
+laser_trigger = 1
 spd = 5
 aim = 0
 img_xscale = 1
@@ -51,6 +54,7 @@ meteor_cd = 90
 meteor_shoting = 0
 fire_cd_walk = 0
 fire_cd = 0
+fire_cd_max = 150
 FifthParticleSystem = part_system_create();
 fifth_particle = part_type_create();
 part_system_depth(FifthParticleSystem,-2000)
@@ -160,11 +164,13 @@ if change_time == 0 &amp;&amp; meteor_cd &gt; 0 &amp;&amp; laser_cd &gt; 0{
             mp_potential_step(obj_char.x,obj_char.y,real_spd,false)
             
             }
-if x &lt; nearest.x {image_xscale = 1} else {image_xscale = -1};
+if x &lt; nearest.x {image_xscale = img_scale} else {image_xscale = -img_scale};
 
 if healt &lt;= 0 {
                 
                 if healt_1 != 0 {
+                                scr_boss_1_death_explosion()
+                                image_speed = img_spd
                                 healt = healt_2
                                 max_healt = healt_2
                                 audio_stop_all()
@@ -182,6 +188,7 @@ if healt &lt;= 0 {
                                 audio_stop_all()
                                 audio_play_sound(boss3,1,true)
                                 healt = healt_3
+                                global.fire = 0
                                 max_healt = healt_3
                                 healt_2 = 0
                                 laser_cd = 90
@@ -196,7 +203,7 @@ if healt &lt;= 0 {
                 if healt_3 != 0 &amp;&amp; healt &lt;= 0{
                                 audio_stop_all()
                                 audio_play_sound(boss4,1,true)
-                                global.fire = 0
+                                
                                 healt = healt_4
                                 max_healt = healt_4
                                 healt_4 = 0
@@ -280,25 +287,45 @@ if type = "third boss" {
                                             } 
                                             else
                                             {
-                                            if image_index == 0 {image_speed = 0}
-                                            var point_dir = point_direction(x,y-16,obj_char.x,obj_char.y);
-                                                         var _cos = dcos(point_dir) ;
-                                                         var _sin= dsin(point_dir) ;
-                                                         var xx = x + _cos*8;
-                                                         var yy = y-16 + _sin*8;
-                                                        var targetDirection = point_direction(x, y, obj_char.x, obj_char.y);
+
+                                                         
+                                                        var targetDirection = point_direction(x, y-16, obj_char.x, obj_char.y);
                                                         var angleDifferenc = angle_difference(aim,targetDirection);
-                                                        var rot_spd = 8;
+                                                        var rot_spd = 3;
                                                         aim -= (min(abs(angleDifferenc), rot_spd) * sign(angleDifferenc))
+                                                        var _cos = dcos(aim) ;
+                                                         var _sin= dsin(aim) ;
+                                                         var xx = x + _cos*laser_len;
+                                                         var yy = y-16 - _sin*laser_len;
+                                                        if laser_trigger == 1 {
+                                                                                repeat(10) {
+                                                                                b = instance_create(x-16,y,obj_laser)
+                                                                                //b.speed = 8
+                                                                                b.direction = aim
+                                                                                b.image_angle = aim
+                                                                                b.x = xx
+                                                                                b.y = yy
+                                                                                b.len = laser_len
+                                                                                laser_len += 8
+                                                                                laser_cd = 0
+                                                                                }
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                            b = instance_create(x-16,y,obj_laser)
+                                                                            //b.speed = 8
+                                                                            b.direction = aim
+                                                                            b.image_angle = aim
+                                                                            b.x = xx
+                                                                            b.y = yy
+                                                                            b.len = laser_len
+                                                                            }
                                                         
-                                                        b = instance_create(x,y,obj_laser)
-                                                        b.speed = 16
-                                                        b.direction = aim
-                                                        b.image_angle = aim
-                                                        b.x = xx
-                                                        b.y = yy
-                                                        laser_cd = 0
-                                                        if laser_time != 90 {laser_time += 1} else {laser_cd = 90 laser_time = 0 image_speed = 0.5 b = 0}
+                                                        laser_trigger = 0
+                                                        laser_len = 0
+                                                        if laser_time != 90 {laser_time += 1} else {laser_cd = 90 laser_trigger = 1 laser_time = 0 image_speed = 0.5 b = 0}
+                                                        
+                                                        
                                                         
                                             
                                             }
@@ -324,7 +351,9 @@ if type = "second boss" {
                                        f = instance_create(x,y,obj_fire)
                                        f.direction = dir-270
                                        f.speed = 20
-                                       fire_cd = 150
+                                       if fire_cd_max &gt; 30 {fire_cd_max -= 20}
+                                       spd += 0.2
+                                       fire_cd = fire_cd_max
                                        }
                                        
                         if fire_cd_walk &gt; 0 {
@@ -339,7 +368,13 @@ if type = "second boss" {
                                                              }
                                                              
                                             }
-                        }                            
+                        }                    
+if type = "first boss" {
+                        img_scale += 0.008
+                        image_yscale += 0.008
+                        
+                        image_speed =  img_spd/img_scale
+                        }                                
 if change_time &gt; 0 {
                     if change_time &gt; 40 {
                                         change_size += 0.025
@@ -351,6 +386,7 @@ if change_time &gt; 0 {
                                         sprite_index = change_sprite
                                         change_size -= 0.025
                                         image_xscale = 1 
+                                        img_scale = 1
                                         image_yscale = 1
                                         }
                     part_system_depth(FifthParticleSystem,depth);                    

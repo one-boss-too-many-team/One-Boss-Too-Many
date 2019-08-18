@@ -71,6 +71,9 @@
     <background>background\background_menu</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_boss_1_death_explosion.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_char</object>
     <object>objects\obj_bullet</object>
