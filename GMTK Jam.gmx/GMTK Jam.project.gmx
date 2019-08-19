@@ -10,6 +10,10 @@
     <sound>sound\boss2</sound>
     <sound>sound\boss3</sound>
     <sound>sound\boss4</sound>
+    <sound>sound\laun_1</sound>
+    <sound>sound\laun_2</sound>
+    <sound>sound\laun_3</sound>
+    <sound>sound\laun_4</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player">
@@ -17,6 +21,7 @@
       <sprite>sprites\spr_lanter_o</sprite>
       <sprite>sprites\spr_green_fireball</sprite>
       <sprite>sprites\spr_yellow_fireball</sprite>
+      <sprite>sprites\spr_red_fireball</sprite>
       <sprite>sprites\spr_lanter_of</sprite>
       <sprite>sprites\spr_lanter_on</sprite>
       <sprite>sprites\spr_lanter_off</sprite>

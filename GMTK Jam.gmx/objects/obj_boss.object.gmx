@@ -25,7 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(boss1,1,true)
+            <string>audio_stop_all()
+audio_laun = laun_1
+audio_1 = boss1
+audio_play_sound(audio_laun,1,false)
 img_scale = 1
 real_spd = 2
 laser_len = 0
@@ -174,8 +177,13 @@ if healt &lt;= 0 {
                                 image_speed = img_spd
                                 healt = healt_2
                                 max_healt = healt_2
+                                
                                 audio_stop_all()
-                                audio_play_sound(boss2,1,true)
+                                audio_laun = laun_2
+                                audio_1 = boss2
+                                audio_play_sound(audio_laun,1,false)
+                                
+                                
                                 healt_1 = 0
                                 type = "second boss"
                                 spd = 4
@@ -186,8 +194,12 @@ if healt &lt;= 0 {
                                 }
                                 
                 if healt_2 != 0 &amp;&amp; healt &lt;= 0{
+                
                                 audio_stop_all()
-                                audio_play_sound(boss3,1,true)
+                                audio_laun = laun_3
+                                audio_1 = boss3
+                                audio_play_sound(audio_laun,1,false)
+                                
                                 healt = healt_3
                                 global.fire = 0
                                 laser_cd = 90
@@ -203,8 +215,11 @@ if healt &lt;= 0 {
                                 }
                                 
                 if healt_3 != 0 &amp;&amp; healt &lt;= 0{
+                
                                 audio_stop_all()
-                                audio_play_sound(boss4,1,true)
+                                audio_laun = laun_4
+                                audio_1 = boss4
+                                audio_play_sound(audio_laun,1,false)
                                 
                                 healt = healt_4
                                 max_healt = healt_4
@@ -402,6 +417,28 @@ if change_time &gt; 0 {
                     part_emitter_burst(FifthParticleSystem,fifth_emitter,fifth_particle,5)
                     change_time -= 1
                     }                            
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// audio
+if !audio_is_playing(audio_laun) &amp;&amp; !audio_is_playing(audio_1) {audio_play_sound(audio_1,1,true)}
 </string>
           </argument>
         </arguments>

@@ -122,41 +122,51 @@ part_system_depth(SecondParticleSystem,depth);
 part_system_depth(ThirdParticleSystem,depth);
 var boss = instance_place(x,y,obj_boss);
 
-if boss != noone &amp;&amp; hit != -1 {
-                                if boss.change_time &lt;= 0 {
-                                part_emitter_region(ThirdParticleSystem, third_emitter, x-10, x+10, y-10, y+10, ps_shape_ellipse, ps_distr_gaussian);                                
+if boss != noone &amp;&amp; hit != -1 &amp;&amp; hit != -2 {
+                                            if boss.change_time &lt;= 0 {
+                                            part_emitter_region(ThirdParticleSystem, third_emitter, x-10, x+10, y-10, y+10, ps_shape_ellipse, ps_distr_gaussian);                                
+                                            
+                                            part_type_shape(third_particle,pt_shape_square);
+                                            part_type_scale(third_particle,1,1);
+                                            part_type_size(third_particle,choose(0.3,0.4,0.5),0.01,-0.03,0);
+                                            part_type_color2(third_particle,make_colour_rgb(112,163,128),65280);
+                                            part_type_alpha2(third_particle,1,0.50);
+                                            part_type_speed(third_particle,choose(0.5,0.6,0.8,0.9),0.7,0,0)
+                                            part_type_direction(third_particle,0,359,0,0) 
+                                            part_type_orientation(third_particle,0,359,10,true,true)
+                                            part_type_life(third_particle,50,60)
+                                            part_type_blend(third_particle,true);                 
                                 
-                                part_type_shape(third_particle,pt_shape_square);
-                                part_type_scale(third_particle,1,1);
-                                part_type_size(third_particle,choose(0.3,0.4,0.5),0.01,-0.03,0);
-                                part_type_color2(third_particle,make_colour_rgb(112,163,128),65280);
-                                part_type_alpha2(third_particle,1,0.50);
-                                part_type_speed(third_particle,choose(0.5,0.6,0.8,0.9),0.7,0,0)
-                                part_type_direction(third_particle,0,359,0,0) 
-                                part_type_orientation(third_particle,0,359,10,true,true)
-                                part_type_life(third_particle,50,60)
-                                part_type_blend(third_particle,true);                 
-                    
-                                part_emitter_burst(ThirdParticleSystem,third_emitter,third_particle,16)
+                                            part_emitter_burst(ThirdParticleSystem,third_emitter,third_particle,20)
+                                            
+                                            if hit == 1 {boss.healt -= 60 hit = -2} else if hit = 0 {boss.healt -= 20 hit = -1}
+                                            
+                                            }
+                                            
+                                            }
+                                            if boss = noone &amp;&amp; hit &lt; 0 {
+                                                                          if hit == -1 {hit = 1}
+                                                                          if hit == -2 {hit = 2}
+                                                                          
+                                                                          }
                                 
-                                if hit == 1 {boss.healt -= 60} else {boss.healt -= 20}
-                                hit = -1
-                                }
-                                
-                                }
-                                if boss = noone  &amp;&amp; hit = -1 {hit = 1}
-                                
-if hit &gt; 1 {
+if hit = 1 {
             color_1 = make_colour_rgb(212,227,85)
             color_2 = make_colour_rgb(245,255,10)
             sprite_index = spr_yellow_fireball
             }   
-            else
+            else if hit = 0
             {
             color_1 = make_colour_rgb(112,163,128)
             color_2 = 65280
             sprite_index = spr_green_fireball
-            }                             
+            }       
+            else if hit = 2
+            {
+            color_1 = make_colour_rgb(243,31,31)
+            color_2 = make_colour_rgb(243,100,100)
+            sprite_index = spr_red_fireball
+            }                      
 if point_distance(x,y,obj_char.x,obj_char.y) &gt;= 320 {hit = 1}
 
 if hit &gt;= 1 {
@@ -172,7 +182,7 @@ if hit &gt;= 1 {
                             }
             }   
                    
-if hit &gt; 1 {
+if hit = 1 {
 part_type_shape(second_particle,pt_shape_square);
 part_type_scale(second_particle,1,1);
 part_type_size(second_particle,0.1,0.05,-.001,0);
@@ -189,7 +199,7 @@ part_emitter_burst(SecondParticleSystem,second_emitter,second_particle,8)
 
 
 }    
-else
+else if hit == 0
 {                             
 part_type_shape(first_particle,pt_shape_square);
 part_type_scale(first_particle,1,1);
@@ -203,7 +213,23 @@ part_type_life(first_particle,50,100)
 part_type_blend(first_particle,true);                                
 part_emitter_region(FirstParticleSystem, first_emitter, x-10, x+10, y-10, y+10, ps_shape_ellipse, ps_distr_gaussian);                                
 part_type_direction(first_particle,(direction-180)-20,(direction-180)+20,0,0)                            
-part_emitter_burst(FirstParticleSystem,first_emitter,first_particle,4)
+part_emitter_burst(FirstParticleSystem,first_emitter,first_particle,8)
+}
+else if hit == 2
+{                             
+part_type_shape(first_particle,pt_shape_square);
+part_type_scale(first_particle,1,1);
+part_type_size(first_particle,0.1,0.05,-.001,0);
+part_type_color2(first_particle,make_colour_rgb(255,105,161),make_colour_rgb(255,0,94));
+part_type_alpha2(first_particle,1,0.75);
+part_type_speed(first_particle,0.1,0.5,0,0)
+part_type_direction(first_particle,0,359,0,0)
+part_type_orientation(first_particle,0,359,10,0,true)
+part_type_life(first_particle,50,100)
+part_type_blend(first_particle,true);                                
+part_emitter_region(FirstParticleSystem, first_emitter, x-10, x+10, y-10, y+10, ps_shape_ellipse, ps_distr_gaussian);                                
+part_type_direction(first_particle,(direction-180)-20,(direction-180)+20,0,0)                            
+part_emitter_burst(FirstParticleSystem,first_emitter,first_particle,8)
 }
 </string>
           </argument>
