@@ -121,10 +121,11 @@ part_system_depth(FirstParticleSystem,depth);
 part_system_depth(SecondParticleSystem,depth);
 part_system_depth(ThirdParticleSystem,depth);
 var boss = instance_place(x,y,obj_boss);
-if boss != noone &amp;&amp; hit &lt;= 1 {
+
+if boss != noone &amp;&amp; hit != -1 {
                                 if boss.change_time &lt;= 0 {
                                 part_emitter_region(ThirdParticleSystem, third_emitter, x-10, x+10, y-10, y+10, ps_shape_ellipse, ps_distr_gaussian);                                
-                                hit = 60
+                                
                                 part_type_shape(third_particle,pt_shape_square);
                                 part_type_scale(third_particle,1,1);
                                 part_type_size(third_particle,choose(0.3,0.4,0.5),0.01,-0.03,0);
@@ -137,16 +138,15 @@ if boss != noone &amp;&amp; hit &lt;= 1 {
                                 part_type_blend(third_particle,true);                 
                     
                                 part_emitter_burst(ThirdParticleSystem,third_emitter,third_particle,16)
-                                boss.healt -= 20
-                                if hit == 1 {boss.healt -= 60}
+                                
+                                if hit == 1 {boss.healt -= 60} else {boss.healt -= 20}
+                                hit = -1
                                 }
                                 
                                 }
-                                if boss == noone &amp;&amp; hit &gt; 1 {
-                                                             hit = 1
-                                                             }
+                                if boss = noone  &amp;&amp; hit = -1 {hit = 1}
+                                
 if hit &gt; 1 {
-            hit -= 1
             color_1 = make_colour_rgb(212,227,85)
             color_2 = make_colour_rgb(245,255,10)
             sprite_index = spr_yellow_fireball

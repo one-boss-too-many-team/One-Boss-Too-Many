@@ -28,6 +28,7 @@
             <string>alp = 1
 room_start = 1
 rooom = -1
+anim_flame = 0
 </string>
           </argument>
         </arguments>
@@ -59,6 +60,9 @@ if room_start == 1 {
                     alp -=  0.05
                     if alp == 0 {room_start = 0}
                     }
+if anim_flame &gt; 8 {anim_flame = 0}                    
+anim_flame += 0.3
+
 </string>
           </argument>
         </arguments>
@@ -92,7 +96,8 @@ if room == room0 {
 draw_sprite(spr_bar,0,view_xview+84,view_yview+20)
 draw_sprite_ext(spr_healt,0,view_xview+84+2,view_yview+2+20,obj_boss.healt/obj_boss.max_healt,1,0,c_white,1)
 
-draw_sprite_ext(spr_heart,obj_char.healt,view_xview+16,view_yview+view_hview-144,1,1,0,c_white,1)
+draw_sprite_ext(spr_lantern_health,anim_flame,view_xview+16,view_yview+view_hview-144,1,1,0,c_white,1)
+draw_sprite_ext(spr_lantern_health_flame,anim_flame,view_xview+80,view_yview+view_hview-144+111,obj_char.healt,obj_char.healt,0,c_white,1)
 }
 </string>
           </argument>

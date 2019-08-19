@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>size =0
+            <string>c = 2
+size =0
 </string>
           </argument>
         </arguments>
@@ -76,12 +77,32 @@ draw_set_blend_mode(bm_normal);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if place_meeting(x,y,obj_char) or place_meeting(x,y,obj_column) {
+            <string>if place_meeting(x,y,obj_char) or place_meeting(x,y,obj_column) or place_meeting(x,y,obj_solid)  {
                                                                 speed = 0
                                                                 image_speed = 0.7
                                                                 sprite_index = spr_meteor_explosion
                                                                 image_angle = 0
+                                                                var co = instance_place(x,y,obj_column);
+                                                                
+                                                                if co != noone {
+                                                                                co.mask_index = spr_no_mask
+                                                                                }
+                                                                
+                                                                if c != 0 &amp;&amp; !place_meeting(x,y,obj_char) {
+                                                                
+                                                                c -= 1
+                                                                
+                                                                m = instance_create(x,y,obj_meteor)
+                                                                m.speed = 7
+                                                                var dir = point_direction(x,y,obj_char.x,obj_char.y)+random_range(20,-20);
+                                                                m.c = c
+                                                                m.direction = dir
+                                                                m.image_angle = dir
+                                                                c = 0
                                                                 }
+                                                                }
+                                                                
+if sprite_index = spr_meteor_explosion {speed = 0}
 </string>
           </argument>
         </arguments>
@@ -108,6 +129,22 @@ draw_set_blend_mode(bm_normal);
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
   </events>

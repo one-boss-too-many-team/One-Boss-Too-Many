@@ -12,54 +12,81 @@
     <sound>sound\boss4</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_main_</sprite>
-    <sprite>sprites\spr_lanter_of</sprite>
-    <sprite>sprites\spr_lanter_o</sprite>
-    <sprite>sprites\spr_green_fireball</sprite>
-    <sprite>sprites\spr_yellow_fireball</sprite>
-    <sprite>sprites\sprite3</sprite>
+    <sprites name="Player">
+      <sprite>sprites\spr_main_</sprite>
+      <sprite>sprites\spr_lanter_o</sprite>
+      <sprite>sprites\spr_green_fireball</sprite>
+      <sprite>sprites\spr_yellow_fireball</sprite>
+      <sprite>sprites\spr_lanter_of</sprite>
+      <sprite>sprites\spr_lanter_on</sprite>
+      <sprite>sprites\spr_lanter_off</sprite>
+      <sprite>sprites\spr_main_char</sprite>
+      <sprites name="player gui">
+        <sprite>sprites\spr_heart</sprite>
+      </sprites>
+    </sprites>
     <sprites name="enemies ">
-      <sprite>sprites\spr_boss_3_run</sprite>
-      <sprite>sprites\sprite8</sprite>
-      <sprite>sprites\spr_boss_4_run</sprite>
-      <sprite>sprites\sprite9</sprite>
-      <sprite>sprites\spr_boss_1_run</sprite>
-      <sprite>sprites\sprite10</sprite>
-      <sprite>sprites\spr_boss_2_run</sprite>
-      <sprite>sprites\sprite11</sprite>
+      <sprites name="boss 1">
+        <sprite>sprites\spr_boss_1_run</sprite>
+      </sprites>
+      <sprites name="boss 2">
+        <sprite>sprites\spr_boss_2_run</sprite>
+      </sprites>
+      <sprites name="boss 3">
+        <sprite>sprites\spr_boss_3_run</sprite>
+      </sprites>
+      <sprites name="boss 4">
+        <sprite>sprites\spr_boss_4_run</sprite>
+      </sprites>
+      <sprite>sprites\spr_bar</sprite>
+      <sprite>sprites\spr_healt</sprite>
     </sprites>
     <sprite>sprites\spr_column</sprite>
     <sprite>sprites\spr_column_destruction</sprite>
     <sprite>sprites\spr_column_brick</sprite>
-    <sprite>sprites\sprite17</sprite>
-    <sprite>sprites\spr_meteor</sprite>
-    <sprite>sprites\spr_meteor_explosion</sprite>
-    <sprite>sprites\sprite20</sprite>
+    <sprites name="Hazards">
+      <sprite>sprites\spr_fire</sprite>
+      <sprites name="meteor">
+        <sprite>sprites\spr_meteor</sprite>
+        <sprite>sprites\spr_meteor_explosion</sprite>
+        <sprite>sprites\sprite17</sprite>
+      </sprites>
+      <sprites name="Thuder">
+        <sprite>sprites\spr_thunder_3</sprite>
+        <sprite>sprites\spr_thunder_1</sprite>
+        <sprite>sprites\spr_thunder_5</sprite>
+        <sprite>sprites\spr_thunder_4</sprite>
+        <sprite>sprites\spr_thunder_2</sprite>
+      </sprites>
+      <sprites name="Laser">
+        <sprite>sprites\spr_laser</sprite>
+        <sprite>sprites\spr_laser_hit</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Gui">
+      <sprites name="Scraped menu">
+        <sprite>sprites\sprite34</sprite>
+        <sprite>sprites\spr_play</sprite>
+        <sprite>sprites\spr_quit</sprite>
+      </sprites>
+      <sprites name="Menu">
+        <sprite>sprites\spr_quit_button</sprite>
+        <sprite>sprites\spr_menu</sprite>
+        <sprite>sprites\spr_play_button</sprite>
+        <sprite>sprites\spr_glow_effect</sprite>
+      </sprites>
+      <sprites name="Game over">
+        <sprite>sprites\sprite37</sprite>
+      </sprites>
+      <sprites name="Victory">
+        <sprite>sprites\sprite40</sprite>
+      </sprites>
+    </sprites>
     <sprite>sprites\spr_no_mask</sprite>
-    <sprite>sprites\spr_main_char</sprite>
-    <sprite>sprites\spr_lanter_on</sprite>
-    <sprite>sprites\spr_lanter_off</sprite>
-    <sprite>sprites\spr_fire</sprite>
-    <sprite>sprites\spr_thunder_1</sprite>
-    <sprite>sprites\spr_thunder_2</sprite>
-    <sprite>sprites\spr_thunder_3</sprite>
-    <sprite>sprites\spr_thunder_4</sprite>
-    <sprite>sprites\spr_thunder_5</sprite>
-    <sprite>sprites\spr_laser</sprite>
-    <sprite>sprites\spr_laser_hit</sprite>
-    <sprite>sprites\spr_bar</sprite>
-    <sprite>sprites\spr_healt</sprite>
-    <sprite>sprites\sprite34</sprite>
-    <sprite>sprites\spr_play</sprite>
-    <sprite>sprites\spr_quit</sprite>
-    <sprite>sprites\sprite37</sprite>
-    <sprite>sprites\sprite40</sprite>
     <sprite>sprites\spr_solid</sprite>
-    <sprite>sprites\spr_heart</sprite>
-    <sprite>sprites\spr_glow_effect</sprite>
-    <sprite>sprites\spr_menu</sprite>
-    <sprite>sprites\spr_play_button</sprite>
-    <sprite>sprites\spr_quit_button</sprite>
+    <sprite>sprites\spr_thunder</sprite>
+    <sprite>sprites\spr_lantern_health</sprite>
+    <sprite>sprites\spr_lantern_health_flame</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>

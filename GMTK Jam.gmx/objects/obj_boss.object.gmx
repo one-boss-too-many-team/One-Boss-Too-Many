@@ -30,6 +30,7 @@ img_scale = 1
 real_spd = 2
 laser_len = 0
 laser_trigger = 1
+thunder_number = 1
 spd = 5
 aim = 0
 img_xscale = 1
@@ -40,7 +41,7 @@ change_sprite = 0
 change_size = 0
 healt_1 = 120
 healt_2 = 220
-healt_3 = 100
+healt_3 = 160
 healt_4 = 300
 max_healt = healt_1
 healt = healt_1 
@@ -189,6 +190,7 @@ if healt &lt;= 0 {
                                 audio_play_sound(boss3,1,true)
                                 healt = healt_3
                                 global.fire = 0
+                                laser_cd = 90
                                 max_healt = healt_3
                                 healt_2 = 0
                                 laser_cd = 90
@@ -250,7 +252,7 @@ if type = "fourth boss" {
                                                                     }
                                                                     else
                                                                     {
-                                                                    meteor_cd = 120
+                                                                    meteor_cd = 100
                                                                     
                                                                     b.speed = 8
                                                                     meteor_shoting = 0
@@ -261,29 +263,35 @@ if type = "fourth boss" {
                         }   
                              
 if type = "third boss" {
+                         if thunder_cd &gt; 0 {
+                                            thunder_cd -= 1
+                                            }
+                                            else
+                                            {
+                                            
+                                            
+                                             var angle = 0;
+                                             repeat(8) {
+                                             var _cos = dcos(angle) ;
+                                             var _sin = dsin(angle) ;
+                                             var xx = x + _cos*32;
+                                             var yy = y-16 - _sin*32;
+                                             t = instance_create(xx,yy,obj_thunder)
+                                             t.thunder_number = thunder_number
+                                             t.angle = angle
+                                             t.c_x = x
+                                             t.c_y = y
+                                             
+                                             angle += 45
+                                             }                                            
+                                             thunder_number += 1            
+                                            thunder_cd = 150
+                                            
+                                            }
+                                                              
                         if laser_cd &gt; 0 {
                                             laser_cd -= 1
-                                            if thunder_cd &gt; 0 {
-                                                              thunder_cd -= 1
-                                                              }
-                                                              else
-                                                              {
-                                                              
-                                                              var bet = choose(1,2);
-                                                              
-                                                              if bet == 1 {
-                                                              t = instance_create(x+random_range(50,75),y-16+random_range(50,-50),obj_thunder)
-                                                              t.image_angle = point_direction(x,y-16,obj_char.x,obj_char.y)
-                                                              t.sprite_index = choose(spr_thunder_1,spr_thunder_2,spr_thunder_3,spr_thunder_4,spr_thunder_5)
-                                                              }
-                                                              else
-                                                              {
-                                                              t = instance_create(x+random_range(50,-50),y-16+random_range(50,75),obj_thunder)
-                                                              t.image_angle = point_direction(x,y-16,obj_char.x,obj_char.y)
-                                                              t.sprite_index = choose(spr_thunder_1,spr_thunder_2,spr_thunder_3,spr_thunder_4,spr_thunder_5)
-                                                              }
-                                                              thunder_cd = 15
-                                                              }
+                                           
                                             } 
                                             else
                                             {
@@ -291,14 +299,14 @@ if type = "third boss" {
                                                          
                                                         var targetDirection = point_direction(x, y-16, obj_char.x, obj_char.y);
                                                         var angleDifferenc = angle_difference(aim,targetDirection);
-                                                        var rot_spd = 3;
+                                                        var rot_spd = 1;
                                                         aim -= (min(abs(angleDifferenc), rot_spd) * sign(angleDifferenc))
                                                         var _cos = dcos(aim) ;
                                                          var _sin= dsin(aim) ;
                                                          var xx = x + _cos*laser_len;
                                                          var yy = y-16 - _sin*laser_len;
                                                         if laser_trigger == 1 {
-                                                                                repeat(10) {
+                                                                                repeat(6) {
                                                                                 b = instance_create(x-16,y,obj_laser)
                                                                                 //b.speed = 8
                                                                                 b.direction = aim
@@ -321,7 +329,7 @@ if type = "third boss" {
                                                                             b.len = laser_len
                                                                             }
                                                         
-                                                        laser_trigger = 0
+                                                        laser_trigger = 1
                                                         laser_len = 0
                                                         if laser_time != 90 {laser_time += 1} else {laser_cd = 90 laser_trigger = 1 laser_time = 0 image_speed = 0.5 b = 0}
                                                         
