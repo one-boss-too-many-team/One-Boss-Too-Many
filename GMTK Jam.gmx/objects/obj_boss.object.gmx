@@ -25,10 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_stop_all()
+            <string>
+audio_stop_all()
+
 audio_laun = laun_1
 audio_1 = boss1
-audio_play_sound(audio_laun,1,false)
+
+audio_switch = (audio_sound_length(audio_laun)-0.1)*30
+audio_play_sound(audio_laun,2,false)
 img_scale = 1
 real_spd = 2
 laser_len = 0
@@ -181,7 +185,8 @@ if healt &lt;= 0 {
                                 audio_stop_all()
                                 audio_laun = laun_2
                                 audio_1 = boss2
-                                audio_play_sound(audio_laun,1,false)
+                                audio_play_sound(audio_laun,2,false)
+                                audio_switch = (audio_sound_length(audio_laun)-0.1)*30
                                 
                                 
                                 healt_1 = 0
@@ -198,8 +203,8 @@ if healt &lt;= 0 {
                                 audio_stop_all()
                                 audio_laun = laun_3
                                 audio_1 = boss3
-                                audio_play_sound(audio_laun,1,false)
-                                
+                                audio_play_sound(audio_laun,2,false)
+                                audio_switch = (audio_sound_length(audio_laun)-0.1)*30
                                 healt = healt_3
                                 global.fire = 0
                                 laser_cd = 90
@@ -219,8 +224,8 @@ if healt &lt;= 0 {
                                 audio_stop_all()
                                 audio_laun = laun_4
                                 audio_1 = boss4
-                                audio_play_sound(audio_laun,1,false)
-                                
+                                audio_play_sound(audio_laun,2,false)
+                                audio_switch = (audio_sound_length(audio_laun)-0.1)*30
                                 healt = healt_4
                                 max_healt = healt_4
                                 healt_4 = 0
@@ -438,7 +443,8 @@ if change_time &gt; 0 {
           <argument>
             <kind>1</kind>
             <string>/// audio
-if !audio_is_playing(audio_laun) &amp;&amp; !audio_is_playing(audio_1) {audio_play_sound(audio_1,1,true)}
+if audio_switch &gt; 0 {audio_switch -= 1}
+if audio_switch &lt;= 0 &amp;&amp; !audio_is_playing(audio_1) {audio_play_sound(audio_1,1,true)} 
 </string>
           </argument>
         </arguments>
