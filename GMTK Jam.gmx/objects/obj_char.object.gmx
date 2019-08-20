@@ -54,7 +54,7 @@ part_type_life(fourth_particle,10,15)
 
 fourth_emitter = part_emitter_create(FourthParticleSystem);
 
-reload = 0
+reload = -30
 reload_max = 30
 
 gun_type = 1
@@ -259,6 +259,9 @@ if shot &amp;&amp; reload == 0 {
                         b.image_angle = b.direction
                         reload = 1
                         }
+//start debug                        
+if reload &lt; 0 {reload += 1}
+
 if dash_cd &gt; 0 {
                 dash_cd -= 1
                 dash_alpha = 0.1
