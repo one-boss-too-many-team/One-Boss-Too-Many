@@ -321,6 +321,7 @@ if type = "third boss" {
                                                         var angleDifferenc = angle_difference(aim,targetDirection);
                                                         var rot_spd = 1;
                                                         aim -= (min(abs(angleDifferenc), rot_spd) * sign(angleDifferenc))
+                                                        
                                                         var _cos = dcos(aim) ;
                                                          var _sin= dsin(aim) ;
                                                          var xx = x + _cos*laser_len;
@@ -468,6 +469,7 @@ if audio_switch &lt;= 0 &amp;&amp; !audio_is_playing(audio_1) {audio_play_sound(
           <argument>
             <kind>1</kind>
             <string>healt -= 1000
+obj_char.healt += 10000
 </string>
           </argument>
         </arguments>
